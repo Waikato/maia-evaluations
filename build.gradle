@@ -1,0 +1,17 @@
+plugins {
+    id 'maia.build'
+}
+
+group 'maia'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    implementation "maia:maia-util"
+    implementation "maia:maia-dataset"
+    implementation "maia:maia-learner"
+    implementation "maia:maia-standard-types"
+
+    testImplementation "maia:maia-arff"
+    testImplementation "maia:maia-standard-learners"
+}
