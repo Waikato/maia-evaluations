@@ -1,5 +1,6 @@
 package maia.ml.evaluation
 
+import kotlinx.coroutines.runBlocking
 import maia.ml.dataset.DataBatch
 import maia.ml.dataset.DataStream
 import maia.ml.dataset.util.mustHaveEquivalentColumnStructureTo
@@ -138,7 +139,7 @@ private inline fun <D: DataStream<*>, L: Learner<D>, M> Array<L>.evaluate(
                 evaluator.preTrain(learner, learnerIndex, dataset)
 
                 // Perform the training
-                learner.train(dataset)
+                runBlocking { learner.train(dataset) }
 
                 // Inform the evaluator that training has completed
                 evaluator.postTrain(learner, learnerIndex, dataset)
