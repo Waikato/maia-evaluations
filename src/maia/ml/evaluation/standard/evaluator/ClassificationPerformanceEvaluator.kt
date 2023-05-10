@@ -65,8 +65,8 @@ open class ClassificationPerformanceEvaluator(
     inner class Stats(
         learner: Learner<DataStream<*>>
     ) {
-        val predictRepr = assertType<Nominal<*, *, *, *>>(learner.predictOutputHeaders[0].type).indexRepresentation
-        val trainRepr = assertType<Nominal<*, *, *, *>>(learner.trainHeaders[predictRepr.columnName]!!.type).indexRepresentation
+        val predictRepr = assertType<Nominal<*, *, *, *, *>>(learner.predictOutputHeaders[0].type).indexRepresentation
+        val trainRepr = assertType<Nominal<*, *, *, *, *>>(learner.trainHeaders[predictRepr.columnName]!!.type).indexRepresentation
         val numClasses = predictRepr.dataType.numCategories
         val rowKappa : Array<Estimator> = Array(numClasses) { newEstimator() }
         val columnKappa : Array<Estimator> = Array(numClasses) { newEstimator() }
